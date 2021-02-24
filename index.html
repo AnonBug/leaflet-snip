@@ -1,0 +1,55 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-02-24 18:47:28
+ * @LastEditTime: 2021-02-24 19:27:18
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \0.codes\3.个人小项目\leaflet-snip\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <!-- <link rel="stylesheet" href="./src/leaflet.snip.css"> -->
+    <script src="./dist/html2canvas.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <script src="./src/leaflet.snip.js"></script>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        #mapid {
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mapid"></div>
+    <script>
+        // 新建地图对象
+        var mymap = L.map('mapid').setView([30.624055093, 114.34281208], 12);
+
+        // 向地图对象添加图层
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            id: 'mapbox/streets-v11',
+            accessToken: 'pk.eyJ1IjoibWItYnVnIiwiYSI6ImNrOGVhOGhpcDAwb2EzbXFzZXBsNnpqcXMifQ.7AfUit-gumiVTrDVJPlYJg'
+        }).addTo(mymap);
+
+        let snipControl = new L.Control.Snip({ scale: 3, position: 'topleft' })
+
+        mymap.addControl(snipControl);
+    </script>
+</body>
+
+</html>
